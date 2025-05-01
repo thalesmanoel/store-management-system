@@ -38,6 +38,14 @@ public class Sale {
 		this.totalPrice = totalPrice;
 		this.items = items;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Double getTotalPrice() {
 		return totalPrice;
