@@ -28,8 +28,29 @@ public class SaleItemService {
     public SaleItem registerSaleItem(SaleItem saleItem) {
         return saleItemRepository.save(saleItem);
     }
+    
+    public SaleItem updateSaleItem(Long id, SaleItem itemUpdated) {
+        Optional<SaleItem> itemOpt = saleItemRepository.findById(id);
+        if (itemOpt.isPresent()) {
+            SaleItem item = itemOpt.get();
+
+            item.setProduct(itemUpdated.getProduct());
+            item.setQuantity(itemUpdated.getQuantity());
+            item.setUnitPrice(itemUpdated.getUnitPrice());
+
+            return saleItemRepository.save(item);
+        } else {
+            throw new ResourceNotFoundException(id);
+        }
+    }
+
 
     public void deleteSaleItem(Long id) {
-        saleItemRepository.deleteById(id);
+        if (saleItemRepository.existsById(id)) {
+            saleItemRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException(id);
+        }
     }
+
 }

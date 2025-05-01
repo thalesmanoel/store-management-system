@@ -28,8 +28,29 @@ public class ProductService {
     public Product registerProduct(Product product) {
         return productRepository.save(product);
     }
+    
+    public Product updateProduct(Long id, Product productUpdated) {
+        Optional<Product> productOpt = productRepository.findById(id);
+        if (productOpt.isPresent()) {
+            Product product = productOpt.get();
+
+            product.setName(productUpdated.getName());
+            product.setPrice(productUpdated.getPrice());
+            product.setStock(productUpdated.getStock());
+
+            return productRepository.save(product);
+        } else {
+            throw new ResourceNotFoundException(id);
+        }
+    }
+
 
     public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+        if (productRepository.existsById(id)) {
+            productRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException(id);
+        }
     }
+
 }

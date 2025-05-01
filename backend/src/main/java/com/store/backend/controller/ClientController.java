@@ -16,26 +16,32 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<List<Client>> findAll() {
         List<Client> list = clientService.findAll();
         return ResponseEntity.ok().body(list);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value="/get/{id}")
     public ResponseEntity<Client> findById(@PathVariable("id") Long id) {
         Client obj = clientService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping
+    @PostMapping(value = "/post")
     public ResponseEntity<Client> registerClient(@RequestBody Client client) {
         Client createdClient = clientService.registerClient(client);
         return ResponseEntity.ok(createdClient);
     }
+    
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Client> update(@PathVariable("id") Long id, @RequestBody Client obj) {
+        obj = clientService.updateClient(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable("id") Long id) {
         clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
     }

@@ -16,26 +16,26 @@ public class SaleController {
     @Autowired
     private SaleService saleService;
 
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<List<Sale>> findAll() {
         List<Sale> list = saleService.findAll();
         return ResponseEntity.ok().body(list);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value="/get/{id}")
     public ResponseEntity<Sale> findById(@PathVariable("id") Long id) {
         Sale obj = saleService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping
+    @PostMapping(value = "/post")
     public ResponseEntity<Sale> registerSale(@RequestBody Sale sale) {
         Sale createdSale = saleService.registerSale(sale);
         return ResponseEntity.ok(createdSale);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSale(@PathVariable Long id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteSale(@PathVariable("id") Long id) {
         saleService.deleteSale(id);
         return ResponseEntity.noContent().build();
     }

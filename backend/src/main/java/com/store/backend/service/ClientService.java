@@ -28,8 +28,29 @@ public class ClientService {
     public Client registerClient(Client client) {
         return clientRepository.save(client);
     }
+    
+    public Client updateClient(Long id, Client clientUpdated) {
+        Optional<Client> clientOpt = clientRepository.findById(id);
+        if (clientOpt.isPresent()) {
+            Client client = clientOpt.get();
+
+            client.setName(clientUpdated.getName());
+            client.setEmail(clientUpdated.getEmail());
+            client.setPassword(clientUpdated.getPassword());
+
+            return clientRepository.save(client);
+        } else {
+            throw new ResourceNotFoundException(id);
+        }
+    }
+
 
     public void deleteClient(Long id) {
-        clientRepository.deleteById(id);
+        if (clientRepository.existsById(id)) {
+            clientRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException(id);
+        }
     }
+
 }

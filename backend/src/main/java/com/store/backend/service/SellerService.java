@@ -27,9 +27,31 @@ public class SellerService {
 	public Seller registerSeller(Seller seller) {
         return sellerRepository.save(seller);
     }
-    
-    public void deleteSeller(Long id) {
-        sellerRepository.deleteById(id);
-    }
 	
+	public Seller updateSeller(Long id, Seller sellerUpdated) {
+        Optional<Seller> sellerOpt = sellerRepository.findById(id);
+        if (sellerOpt.isPresent()) {
+            Seller seller = sellerOpt.get();
+            
+            seller.setName(sellerUpdated.getName());
+            seller.setEmail(sellerUpdated.getEmail());
+            seller.setPassword(sellerUpdated.getPassword());
+            seller.setRegistrationDate(sellerUpdated.getRegistrationDate());
+            
+            return sellerRepository.save(seller);
+        }
+        else 
+        {
+        	throw new ResourceNotFoundException(id);
+        }
+    }
+    
+	public void deleteSeller(Long id) {
+	    if (sellerRepository.existsById(id)) {
+	        sellerRepository.deleteById(id);
+	    } else {
+	        throw new ResourceNotFoundException(id);
+	    }
+	}
+
 }

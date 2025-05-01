@@ -30,6 +30,11 @@ public class SaleService {
     }
 
     public void deleteSale(Long id) {
-        saleRepository.deleteById(id);
+        if (saleRepository.existsById(id)) {
+            saleRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException(id);
+        }
     }
+
 }

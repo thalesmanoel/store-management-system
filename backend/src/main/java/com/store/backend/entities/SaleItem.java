@@ -42,6 +42,22 @@ public class SaleItem {
 		this.id = id;
 	}
 
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Sale getSale() {
+		return sale;
+	}
+
+	public void setSale(Sale sale) {
+		this.sale = sale;
+	}
+
 	public Integer getQuantity() {
 		return quantity;
 	}

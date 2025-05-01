@@ -1,0 +1,56 @@
+@import url('https://unpkg.com/lucide@latest');
+
+/* Cabeçalho fixo */
+
+
+/* Container ajustado para header fixo */
+.container {
+  max-width: 900px;
+  margin: 120px auto 60px;
+  padding: 24px;
+  text-align: center;
+}
+
+.title h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.title p {
+  font-size: 1.1rem;
+  color: rgb(152, 152, 152);
+  margin-bottom: 40px;
+}
+
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menu-card {
+  background-color: #f4f4f4;
+  padding: 24px;
+  border-radius: 12px;
+  width: 180px;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-card:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
