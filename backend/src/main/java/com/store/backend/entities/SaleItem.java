@@ -19,6 +19,7 @@ public class SaleItem {
 	private Double unitPrice;
 	
 	@ManyToOne
+	@JoinColumn(name = "product_id") 
 	private Product product;
 	
 	@ManyToOne
