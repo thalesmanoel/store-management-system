@@ -11,6 +11,7 @@ import com.store.backend.service.ClientService;
 
 @RestController
 @RequestMapping(value = "/client")
+@CrossOrigin("*")
 public class ClientController {
 
     @Autowired

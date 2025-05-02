@@ -1,1 +1,31 @@
-<p>seller-list works!</p>
+<app-header></app-header>
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>NOME</th>
+        <th>EMAIL
+          <!--<button (click)="ordenarPorPreco()">Ordenar ▼</button>-->
+        </th>
+        <th>DATA DE REGISTRO</th>
+        <th>AÇÕES</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (seller of lista; track $index) {
+      <tr>
+        <td>{{seller.name}}</td>
+        <td>{{seller.email}}</td>
+        <td>{{seller.registrationDate | date:'dd/MM/yyyy'}}</td>
+        <td class="btn-edit-delete">
+          <button type="button">Editar</button><!--(click)="edit(seller)"-->
+          <button type="button" class="delete" (click)="deleteById(seller.id)">Deletar</button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+
+  <button [routerLink]="['/seller-register']" routerLinkActive="router-link-active" >Adicionar produto</button>
+</div>

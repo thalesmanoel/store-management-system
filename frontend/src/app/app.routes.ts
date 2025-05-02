@@ -3,6 +3,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ClientRegisterComponent } from './components/client-register/client-register.component';
 import { SellerRegisterComponent } from './components/seller-register/seller-register.component';
 import { ProductRegisterComponent } from './components/product-register/product-register.component';
+import { SellerListComponent } from './components/seller-list/seller-list.component';
+import { ClientListComponent } from './components/client-list/client-list.component';
 
 export const routes: Routes = [
   {path: "", redirectTo: "menu", pathMatch: 'full'},
@@ -11,4 +13,8 @@ export const routes: Routes = [
   {path: "seller-register", component: SellerRegisterComponent},
   {path: "product-register", component: ProductRegisterComponent},
   {path: "product-register", component: ProductRegisterComponent},
+  {path: "seller-list", component: SellerListComponent},
+  {path: "client-list", component: ClientListComponent},
+  {path: "seller/edit/:id", component: SellerListComponent},
+  {path: "client/edit/:id", component: ClientListComponent},
 ];
