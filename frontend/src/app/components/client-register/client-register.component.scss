@@ -5,10 +5,6 @@
   align-items: center;
 }
 
-img{
-  width: 90%;
-}
-
 .form-container {
   display: flex;
   background-color:var(--secundary-color);
@@ -29,14 +25,13 @@ img{
   padding: 32px;
 }
 
-.form-left i {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
 .form-left h2 {
   font-size: 24px;
   margin: 0;
+}
+
+img{
+  width: 90%;
 }
 
 .form-right {

@@ -1,8 +1,7 @@
 .app-header {
   display: flex;
   justify-content: space-between;
-  background-color: #0d6efd;
-  color: white;
+  background-color: var(--primary-color);
   padding: 18px 40px;
   position: fixed;
   top: 0;
@@ -20,8 +19,8 @@
   font-weight: bold;
 }
 
-.header-content i {
-  font-size: 24px;
+img{
+  width: 100px;
 }
 
 .icons{

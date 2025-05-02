@@ -3,11 +3,11 @@
 <div class="client-form-wrapper">
   <div class="form-container">
     <div class="form-left">
-      <img src="../../../assets/logo.png" alt="">
+      <img src="../../../assets/logo.png" alt="logo">
     </div>
 
     <div class="form-right">
-      <h3>Faça o seu cadastro</h3>
+      <h3>Faça o seu cadastro como cliente</h3>
       <form [formGroup]="form" (ngSubmit)="submit()">
         <input type="text" placeholder="Nome completo" formControlName="name" />
         <div class="error" *ngIf="f.name.touched && f.name.invalid">É necessário inserir seu nome.</div>

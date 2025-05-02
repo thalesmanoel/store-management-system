@@ -1,14 +1,18 @@
-@import url('https://unpkg.com/lucide@latest');
-
-/* Cabeçalho fixo */
-
-
-/* Container ajustado para header fixo */
 .container {
   max-width: 900px;
-  margin: 120px auto 60px;
+  margin: auto;
   padding: 24px;
   text-align: center;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+img{
+  width: 200px;
 }
 
 .title h1 {

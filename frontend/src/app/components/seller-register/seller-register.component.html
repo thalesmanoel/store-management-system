@@ -1,1 +1,28 @@
-<p>seller-register works!</p>
+<app-header></app-header>
+
+<div class="seller-form-wrapper">
+  <div class="form-container">
+    <div class="form-left">
+      <img src="../../../assets/logo.png" alt="logo">
+    </div>
+
+    <div class="form-right">
+      <h3>Faça o seu cadastro como vendedor</h3>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <input type="text" placeholder="Nome completo" formControlName="name" />
+        <div class="error" *ngIf="f.name.touched && f.name.invalid">É necessário inserir seu nome.</div>
+
+        <input type="email" placeholder="Email" formControlName="email" />
+        <div class="error" *ngIf="f.email.touched && f.email.errors?.['required']">É necessário inserir seu e-mail.</div>
+        <div class="error" *ngIf="f.email.touched && f.email.errors?.['email']">Endereço de e-mail inválido</div>
+
+        <input type="password" placeholder="Senha" formControlName="password" />
+        <div class="error" *ngIf="f.password.touched && f.password.invalid">É necessário inserir sua senha.</div>
+
+        <input type="text" [value]="form.value.createdAt | date:'dd/MM/yyyy'" disabled />
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

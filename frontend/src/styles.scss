@@ -3,7 +3,13 @@
   --secundary-color: #003b94;
   --hover-color: #007bff;
   --button-color: #4fa4ff;
-  --backgorund-color: rgb(198, 198, 198);
+  --backgorund-color: rgb(232, 232, 232);
   --title-color: #333;
   --border-color: #ccc;
 }
+
+body, html {
+  background-color: var(--backgorund-color);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
