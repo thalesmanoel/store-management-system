@@ -54,6 +54,10 @@ img{
   transform: translateY(-5px);
 }
 
+.menu-card:hover svg {
+  fill: white;
+}
+
 .icon {
   font-size: 2rem;
   margin-bottom: 12px;

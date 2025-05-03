@@ -1,0 +1,13 @@
+<div class="modal-backdrop" *ngIf="show">
+  <div class="modal-content">
+    <h3>Confirmação</h3>
+    <hr>
+    <p>{{ message }}</p>
+    <hr>
+    <div class="modal-actions">
+      <button class="btn cancel" (click)="onCancel()">Cancelar</button>
+      <button class="btn confirm" (click)="onConfirm()">Deletar</button>
+    </div>
+  </div>
+</div>
+

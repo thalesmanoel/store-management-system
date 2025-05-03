@@ -23,12 +23,18 @@ img{
   width: 100px;
 }
 
-.icons{
+.nav-bar nav{
   display: flex;
-  gap: 10px;
+  gap: 40px;
 }
 
-.profile-icon, .configuration-icon, .logout-icon:hover{
-  cursor: pointer;
+nav a{
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  transition: 0.5s;
 }
 
+nav a:hover{
+  transform: translate(-3px, -3px);
+}

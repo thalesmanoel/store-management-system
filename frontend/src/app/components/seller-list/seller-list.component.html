@@ -1,31 +1,37 @@
 <app-header></app-header>
 
 <div class="container">
+  <h1>Lista de vendedores</h1>
   <table>
     <thead>
       <tr>
         <th>NOME</th>
-        <th>EMAIL
-          <!--<button (click)="ordenarPorPreco()">Ordenar ▼</button>-->
-        </th>
+        <th>EMAIL</th>
         <th>DATA DE REGISTRO</th>
         <th>AÇÕES</th>
       </tr>
     </thead>
     <tbody>
-      @for (seller of lista; track $index) {
+      @for (seller of list; track $index) {
       <tr>
         <td>{{seller.name}}</td>
         <td>{{seller.email}}</td>
         <td>{{seller.registrationDate | date:'dd/MM/yyyy'}}</td>
         <td class="btn-edit-delete">
-          <button type="button">Editar</button><!--(click)="edit(seller)"-->
-          <button type="button" class="delete" (click)="deleteById(seller.id)">Deletar</button>
+          <button type="button" (click)="edit(seller)">Editar</button>
+          <button type="button" class="delete" (click)="openConfirm()">Deletar</button>
         </td>
       </tr>
+
+      <app-confirm-delete
+        [show]="showModal"
+        (confirm)="deleteById(seller.id)"
+        (cancel)="showModal = false"
+        [message]="'Você tem certeza que deseja deletar esse item?'">
+      </app-confirm-delete>
     }
     </tbody>
   </table>
 
-  <button [routerLink]="['/seller-register']" routerLinkActive="router-link-active" >Adicionar produto</button>
+  <button [routerLink]="['/seller-register']" routerLinkActive="router-link-active" >Adicionar vendedor</button>
 </div>

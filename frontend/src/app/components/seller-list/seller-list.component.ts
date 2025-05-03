@@ -4,25 +4,27 @@ import { Seller } from '../../models/seller';
 import { SellerService } from '../../services/seller.service';
 import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent } from "../header/header.component";
+import { ConfirmDeleteComponent } from "../../modals/confirm-delete/confirm-delete.component";
 
 @Component({
   selector: 'app-seller-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent],
+  imports: [CommonModule, RouterModule, HeaderComponent, ConfirmDeleteComponent],
   templateUrl: './seller-list.component.html',
   styleUrl: './seller-list.component.scss'
 })
 export class SellerListComponent {
-lista: Seller[] = [];
+list: Seller[] = [];
 
 sellerService = inject(SellerService);
-router = inject(Router)
+router = inject(Router);
+showModal = false;
 
 findAll(){
   this.sellerService.findAll().subscribe({
-    next: lista => {
-      this.lista = lista;
-      console.log(this.lista);
+    next: list => {
+      this.list = list;
+      console.log(this.list);
     },
     error: erro => {
       console.error('Erro ao buscar os dados:', erro);
@@ -37,17 +39,20 @@ edit(seller: Seller){
 }
 
 deleteById(id: number){
-  if (confirm("Tem certeza que deseja deletar esse registro?")) {
+  this.showModal = false;
     this.sellerService.deleteSeller(id).subscribe({
       next: () => {
-        this.lista = this.lista.filter(seller => seller.id !== id);
+        this.list = this.list.filter(seller => seller.id !== id);
       },
       error: erro => {
         alert('Erro ao deletar produto!');
         console.error(erro);
       }
     });
-  }
+}
+
+openConfirm() {
+  this.showModal = true;
 }
 
 ngOnInit(){

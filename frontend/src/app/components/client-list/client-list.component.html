@@ -1,6 +1,7 @@
 <app-header></app-header>
 
 <div class="container">
+  <h1>Lista de clientes</h1>
   <table>
     <thead>
       <tr>
@@ -13,19 +14,28 @@
       </tr>
     </thead>
     <tbody>
-      @for (seller of lista; track $index) {
+      @for (client of list; track $index) {
       <tr>
-        <td>{{seller.name}}</td>
-        <td>{{seller.email}}</td>
-        <td>{{seller.cpf}}</td>
+        <td>{{client.name}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.cpf}}</td>
         <td class="btn-edit-delete">
-          <button type="button">Editar</button><!--(click)="edit(seller)"-->
-          <button type="button" class="delete">Deletar</button><!--(click)="deleteById(produto.id)"-->
+          <button type="button" (click)="edit(client)">Editar</button>
+          <button type="button" class="delete" (click)="openConfirm()">Deletar</button>
         </td>
       </tr>
+
+      <app-confirm-delete
+        [show]="showModal"
+        (confirm)="deleteById(client.id)"
+        (cancel)="showModal = false"
+        [message]="'Você tem certeza que deseja deletar esse item?'">
+      </app-confirm-delete>
     }
     </tbody>
   </table>
 
-  <button [routerLink]="['/client-register']" routerLinkActive="router-link-active" >Adicionar produto</button>
+  <button [routerLink]="['/client-register']" routerLinkActive="router-link-active" >Adicionar cliente</button>
 </div>
+
+

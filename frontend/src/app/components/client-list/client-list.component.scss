@@ -11,6 +11,8 @@ table {
   width: 600px;
   font-size: 16px;
   overflow: hidden;
+  border-collapse: collapse;
+  border-radius: 10px;
 }
 
 thead {
@@ -48,7 +50,6 @@ td {
 
 .delete:hover{
   background-color: rgb(192, 0, 0);
-
 }
 
 button{

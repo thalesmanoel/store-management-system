@@ -7,7 +7,7 @@
     </div>
 
     <div class="form-right">
-      <h3>Faça o seu cadastro como vendedor</h3>
+      <h3>Insira os dados do vendedor</h3>
       <form [formGroup]="form" (ngSubmit)="submit()">
         <input type="text" placeholder="Nome completo" formControlName="name" />
         <div class="error" *ngIf="f.name.touched && f.name.invalid">É necessário inserir seu nome.</div>
@@ -19,7 +19,7 @@
         <input type="password" placeholder="Senha" formControlName="password" />
         <div class="error" *ngIf="f.password.touched && f.password.invalid">É necessário inserir sua senha.</div>
 
-        <input type="text" [value]="form.value.createdAt | date:'dd/MM/yyyy'" disabled />
+        <input type="text" [value]="form.value.registrationDate | date:'dd/MM/yyyy'" disabled />
 
         <button type="submit">Register</button>
       </form>

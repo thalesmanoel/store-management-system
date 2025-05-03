@@ -7,7 +7,7 @@
     </div>
 
     <div class="form-right">
-      <h3>Faça o cadastro de um novo produto</h3>
+      <h3>Insira os dados do produto</h3>
       <form [formGroup]="form" (ngSubmit)="submit()">
         <input type="text" placeholder="Nome do produto" formControlName="name" />
         <div class="error" *ngIf="f.name.touched && f.name.invalid">É necessário inserir nome.</div>
