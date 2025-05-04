@@ -31,7 +31,7 @@ public class SaleController {
 
     @PostMapping(value = "/post")
     public ResponseEntity<Sale> registerSale(@RequestBody Sale sale) {
-        Sale createdSale = saleService.registerSale(sale);
+    	Sale createdSale = saleService.registerSale(sale);
         return ResponseEntity.ok(createdSale);
     }
 

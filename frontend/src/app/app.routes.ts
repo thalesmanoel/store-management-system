@@ -7,7 +7,6 @@ import { SellerListComponent } from './components/seller-list/seller-list.compon
 import { ClientListComponent } from './components/client-list/client-list.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { BuyListComponent } from './components/buy-list/buy-list.component';
-import { PurchaseSummaryComponent } from './components/purchase-summary/purchase-summary.component';
 
 export const routes: Routes = [
   {path: "", redirectTo: "menu", pathMatch: 'full'},
@@ -19,7 +18,6 @@ export const routes: Routes = [
   {path: "client-list", component: ClientListComponent},
   {path: "product-list", component: ProductListComponent},
   {path: "buy-list", component: BuyListComponent},
-  {path: "purchase-summary", component: PurchaseSummaryComponent},
   {path: "seller/edit/:id", component: SellerRegisterComponent},
   {path: "client/edit/:id", component: ClientRegisterComponent},
 ];

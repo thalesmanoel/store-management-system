@@ -1,7 +1,8 @@
 <app-header></app-header>
 
 <div class="container">
-  <h1>Lista de produtos</h1>
+  <h1>Lista de Produtos</h1>
+
   <table>
     <thead>
       <tr>
@@ -12,15 +13,14 @@
       </tr>
     </thead>
     <tbody>
-      @for (product of list; track $index) {
-      <tr>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.stock}}</td>
+      <tr *ngFor="let product of list;">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</td>
+        <td>{{ product.stock }}</td>
 
         <td class="quantity">
           <div class="quantity-items">
-            {{product.quantity}}
+            {{ getQuantity(product.id) }}
           </div>
 
           <div class="btn-add-sub">
@@ -33,9 +33,20 @@
           </div>
         </td>
       </tr>
-    }
     </tbody>
   </table>
 
-  <button [routerLink]="['/purchase-summary']" routerLinkActive="router-link-active" >Finalizar compra</button>
+  <div class="summary-section">
+    <h3>Total Geral: {{ getTotal() | currency:'BRL':'symbol':'1.2-2' }}</h3>
+
+    <label for="client">Selecione o cliente:</label>
+    <select id="client" [(ngModel)]="selectedClientId">
+      <option [ngValue]="null" disabled>-- Selecione --</option>
+      <option *ngFor="let c of clients" [value]="c.id">
+        {{ c.name }}
+      </option>
+    </select>
+
+    <button (click)="finalizePurchase()">Finalizar Compra</button>
+  </div>
 </div>

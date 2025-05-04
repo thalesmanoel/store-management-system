@@ -1,5 +1,7 @@
 export class SaleItem {
-  id!: number;
-  totalPrice!: number;
-  
+  id?: number;
+  quantity!: number;
+  unitPrice!: number;
+  product?: { id: number };
 }
+
