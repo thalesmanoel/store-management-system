@@ -98,6 +98,7 @@ export class BuyListComponent {
 
     const saleData = {
       clientId: this.selectedClientId,
+      sellerId: 10,
       items: this.list
         .filter(p => (p.quantity ?? 0) > 0)
         .map(p => ({
@@ -109,7 +110,8 @@ export class BuyListComponent {
     };
 
     this.saleService.registerSale(saleData).subscribe({
-      next: () => {
+      next: (response) => {
+        console.log('Resposta do backend:', response);
         alert('Compra finalizada com sucesso!');
       },
       error: (err) => {

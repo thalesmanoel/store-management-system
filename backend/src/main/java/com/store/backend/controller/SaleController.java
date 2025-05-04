@@ -4,14 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.store.backend.dto.SaleDTO;
 import com.store.backend.entities.Sale;
 import com.store.backend.service.SaleService;
 
 @RestController
 @RequestMapping(value = "/sale")
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("*")
 public class SaleController {
 
     @Autowired
@@ -29,9 +37,9 @@ public class SaleController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping(value = "/post")
-    public ResponseEntity<Sale> registerSale(@RequestBody Sale sale) {
-    	Sale createdSale = saleService.registerSale(sale);
+    @PostMapping("/post")
+    public ResponseEntity<Sale> registerSale(@RequestBody SaleDTO saleDTO) {
+        Sale createdSale = saleService.registerSaleFromDTO(saleDTO);
         return ResponseEntity.ok(createdSale);
     }
 

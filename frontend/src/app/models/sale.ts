@@ -2,8 +2,13 @@ import { SaleItem } from "./sale-item";
 
 export class Sale {
   id?: number;
-  totalPrice?: number;
-  clientId!: number; // Mantém apenas o clientId
-  items!: SaleItem[];
+  clientId!: number;
+  sellerId!: number;
+  items!: {
+    productId: number;
+    quantity: number;
+    unitPrice: number;
+  }[];
+  total!: number;
 }
 

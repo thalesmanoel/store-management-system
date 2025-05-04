@@ -3,6 +3,8 @@ package com.store.backend.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +29,7 @@ public class Sale {
 	private Client client;
 	
 	@OneToMany(mappedBy = "sale", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<SaleItem> items = new ArrayList<>();
 	
 	@ManyToOne
@@ -64,4 +67,19 @@ public class Sale {
 		this.items = items;
 	}
 
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Seller getSeller() {
+		return seller;
+	}
+
+	public void setSeller(Seller seller) {
+		this.seller = seller;
+	}
 }
