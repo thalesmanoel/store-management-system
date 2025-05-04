@@ -1,12 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { HeaderComponent } from "../header/header.component";
+import { ConfirmDeleteComponent } from "../../modals/confirm-delete/confirm-delete.component";
+import { Product } from '../../models/product';
+import { Router, RouterModule } from '@angular/router';
+import { ProductService } from '../../services/product.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent, ConfirmDeleteComponent, RouterModule, CommonModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent {
+list: Product[] = [];
 
+productService = inject(ProductService);
+router = inject(Router);
+showModal = false;
+
+findAll(){
+  this.productService.findAll().subscribe({
+    next: list => {
+      this.list = list;
+      console.log(this.list);
+    },
+    error: erro => {
+      console.error('Erro ao buscar os dados:', erro);
+      alert("Ocorreu algum erro!");
+    },
+  });
+}
+
+edit(product: Product){
+  console.log(product);
+  this.router.navigate(['/product/edit', product.id]);
+}
+
+deleteById(id: number){
+  this.showModal = false;
+    this.productService.deleteProduct(id).subscribe({
+      next: () => {
+        this.list = this.list.filter(product => product.id !== id);
+      },
+      error: erro => {
+        alert('Erro ao deletar produto!');
+        console.error(erro);
+      }
+    });
+}
+
+openConfirm() {
+  this.showModal = true;
+}
+
+ngOnInit(){
+  this.findAll();
+}
 }

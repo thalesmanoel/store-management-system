@@ -19,8 +19,6 @@ public class Sale {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Double totalPrice;
-	
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;
@@ -35,7 +33,6 @@ public class Sale {
 	public Sale(){}
 	
 	public Sale(Double totalPrice, List<SaleItem> items) {
-		this.totalPrice = totalPrice;
 		this.items = items;
 	}
 	
@@ -47,14 +44,6 @@ public class Sale {
 		this.id = id;
 	}
 
-	public Double getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
 	public List<SaleItem> getItems() {
 		return items;
 	}
@@ -62,4 +51,13 @@ public class Sale {
 	public void setItems(List<SaleItem> items) {
 		this.items = items;
 	}
+	
+	public Double getTotalPrice() {
+	    double total = 0.0;
+	    for (SaleItem item : items) {
+	        total += item.getSubtotal();
+	    }
+	    return total;
+	}
+
 }

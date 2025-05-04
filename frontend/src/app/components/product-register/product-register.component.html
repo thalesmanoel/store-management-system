@@ -14,11 +14,13 @@
 
         <input type="number" placeholder="Quantidade de estoque" formControlName="stock" />
         <div class="error" *ngIf="f.stock.touched && f.stock.errors?.['required']">É necessário inserir quantidade de estoque.</div>
-        <div class="error" *ngIf="f.stock.touched && f.stock.errors?.['min']">Stock must be 0 or greater.</div>
+        <div class="error" *ngIf="f.stock.touched && f.stock.errors?.['min']">O estoque precisa ser 0 ou maior.</div>
 
         <input type="number" step="0.01" placeholder="Preço (R$)" formControlName="price" />
         <div class="error" *ngIf="f.price.touched && f.price.errors?.['required']">É necessário inserir preço.</div>
         <div class="error" *ngIf="f.price.touched && f.price.errors?.['min']">O preço precisa ser um valor maior que 0.</div>
+
+        <input type="text" [value]="form.value.registrationDate | date:'dd/MM/yyyy'" disabled />
 
         <button type="submit">Register</button>
       </form>

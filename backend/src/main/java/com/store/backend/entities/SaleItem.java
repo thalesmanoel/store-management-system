@@ -73,4 +73,9 @@ public class SaleItem {
 	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
+	
+	public Double getSubtotal() {
+	    return unitPrice * quantity;
+	}
+
 }

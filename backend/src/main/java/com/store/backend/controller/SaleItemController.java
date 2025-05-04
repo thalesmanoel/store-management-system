@@ -11,6 +11,7 @@ import com.store.backend.service.SaleItemService;
 
 @RestController
 @RequestMapping(value = "/saleitem")
+@CrossOrigin("http://localhost:4200/")
 public class SaleItemController {
 
     @Autowired

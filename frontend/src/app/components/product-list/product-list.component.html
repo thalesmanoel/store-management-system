@@ -1,1 +1,39 @@
-<p>product-list works!</p>
+<app-header></app-header>
+
+<div class="container">
+  <h1>Lista de produtos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>NOME</th>
+        <th>DATA DE REGISTRO</th>
+        <th>ESTOQUE</th>
+        <th>VALOR</th>
+        <th>AÇÕES</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of list; track $index) {
+      <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.registrationDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{product.stock}}</td>
+        <td>{{product.price}}</td>
+        <td class="btn-edit-delete">
+          <button type="button" (click)="edit(product)">Editar</button>
+          <button type="button" class="delete" (click)="openConfirm()">Deletar</button>
+        </td>
+      </tr>
+
+      <app-confirm-delete
+        [show]="showModal"
+        (confirm)="deleteById(product.id)"
+        (cancel)="showModal = false"
+        [message]="'Você tem certeza que deseja deletar esse item?'">
+      </app-confirm-delete>
+    }
+    </tbody>
+  </table>
+
+  <button [routerLink]="['/product-register']" routerLinkActive="router-link-active" >Adicionar produto</button>
+</div>
