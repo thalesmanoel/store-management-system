@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.store.backend.dto.SaleDTO;
+import com.store.backend.dto.SaleItemViewDTO;
 import com.store.backend.entities.Sale;
 import com.store.backend.service.SaleService;
 
@@ -29,6 +30,11 @@ public class SaleController {
     public ResponseEntity<List<Sale>> findAll() {
         List<Sale> list = saleService.findAll();
         return ResponseEntity.ok().body(list);
+    }
+    
+    @GetMapping("/get/items-view")
+    public List<SaleItemViewDTO> getAllSaleItemsView() {
+        return saleService.getAllSaleItemsWithClientAndProductNames();
     }
 
     @GetMapping(value="/get/{id}")

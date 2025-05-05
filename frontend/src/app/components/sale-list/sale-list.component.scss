@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+table {
+  width: 100%;
+  max-width: 800px;
+  font-size: 16px;
+  overflow: hidden;
+  border-collapse: collapse;
+  border-radius: 10px;
+}
+
+thead {
+  background-color: rgb(0, 102, 255);
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+tbody tr {
+  background-color: #f4f8fb;
+}
+
+th {
+  text-align: center;
+  font-weight: bold;
+}
+
+td {
+  border-top: 1px solid #ddd;
+}

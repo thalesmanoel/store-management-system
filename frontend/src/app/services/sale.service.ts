@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Sale } from '../models/sale';
+import { SaleItemView } from '../models/sale-item-view';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,9 @@ export class SaleService {
           })
       );
   }
+
+  getAllSaleItems(): Observable<SaleItemView[]> {
+    return this.http.get<SaleItemView[]>(this.API+"/get/items-view");
+  }
+
 }

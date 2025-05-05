@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="container">
+  <h1>Lista de produtos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>CLIENTE</th>
+        <th>PRODUTO</th>
+        <th>QUANTIDADE</th>
+        <th>VALOR UNITÁRIO</th>
+        <th>VALOR TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of list; track $index) {
+      <tr>
+        <td>{{ item.clientName }}</td>
+        <td>{{ item.productName }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.unitPrice | currency:'BRL' }}</td>
+        <td>{{ item.subtotal | currency:'BRL' }}</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+
+
+
+

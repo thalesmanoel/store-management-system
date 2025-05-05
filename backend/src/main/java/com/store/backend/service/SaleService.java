@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.store.backend.dto.SaleDTO;
 import com.store.backend.dto.SaleItemDTO;
+import com.store.backend.dto.SaleItemViewDTO;
 import com.store.backend.entities.Client;
 import com.store.backend.entities.Product;
 import com.store.backend.entities.Sale;
@@ -78,7 +79,6 @@ public class SaleService {
 
             total += item.getSubtotal();
 
-            // Atualiza o estoque
             int updatedStock = product.getStock() - itemDTO.getQuantity();
             if (updatedStock < 0) {
                 throw new RuntimeException("Estoque insuficiente para o produto: " + product.getName());
@@ -94,6 +94,31 @@ public class SaleService {
 
         return saleRepository.save(sale);
     }
+    
+    public List<SaleItemViewDTO> getAllSaleItemsWithClientAndProductNames() {
+        List<Sale> sales = saleRepository.findAll();
+        List<SaleItemViewDTO> viewDTOList = new ArrayList<>();
+
+        for (Sale sale : sales) {
+            String clientName = sale.getClient().getName();
+
+            for (SaleItem item : sale.getItems()) {
+                SaleItemViewDTO dto = new SaleItemViewDTO(
+                    sale.getId(),
+                    clientName,
+                    item.getProduct().getName(),
+                    item.getQuantity(),
+                    item.getUnitPrice(),
+                    item.getSubtotal()
+                );
+                viewDTOList.add(dto);
+            }
+        }
+
+        return viewDTOList;
+    }
+
+
 
     public void deleteSale(Long id) {
         if (saleRepository.existsById(id)) {

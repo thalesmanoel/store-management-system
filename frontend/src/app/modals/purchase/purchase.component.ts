@@ -16,6 +16,7 @@ export class PurchaseComponent {
   @Output() cancel = new EventEmitter<void>();
 
   onConfirm() {
+    window.location.reload();
     this.confirm.emit();
   }
 }
