@@ -37,6 +37,7 @@ public class ClientService {
             client.setName(clientUpdated.getName());
             client.setEmail(clientUpdated.getEmail());
             client.setPassword(clientUpdated.getPassword());
+            client.setCpf(clientUpdated.getCpf());
 
             return clientRepository.save(client);
         } else {

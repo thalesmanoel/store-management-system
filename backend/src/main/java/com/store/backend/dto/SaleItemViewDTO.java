@@ -2,7 +2,6 @@ package com.store.backend.dto;
 
 public class SaleItemViewDTO {
     private Long saleId;
-    private String clientName;
     private String productName;
     private int quantity;
     private double unitPrice;
@@ -10,10 +9,9 @@ public class SaleItemViewDTO {
 
     public SaleItemViewDTO() {}
 
-    public SaleItemViewDTO(Long saleId, String clientName, String productName,
+    public SaleItemViewDTO(Long saleId, String productName,
                            int quantity, double unitPrice, double subtotal) {
         this.saleId = saleId;
-        this.clientName = clientName;
         this.productName = productName;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
@@ -26,14 +24,6 @@ public class SaleItemViewDTO {
 
     public void setSaleId(Long saleId) {
         this.saleId = saleId;
-    }
-
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
     }
 
     public String getProductName() {
@@ -72,7 +62,6 @@ public class SaleItemViewDTO {
     public String toString() {
         return "SaleItemViewDTO{" +
                 "saleId=" + saleId +
-                ", clientName='" + clientName + '\'' +
                 ", productName='" + productName + '\'' +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +

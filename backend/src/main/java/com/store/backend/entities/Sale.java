@@ -10,8 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -24,17 +22,9 @@ public class Sale {
 	
 	private Double totalPrice;
 	
-	@ManyToOne
-	@JoinColumn(name = "client_id")
-	private Client client;
-	
 	@OneToMany(mappedBy = "sale", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<SaleItem> items = new ArrayList<>();
-	
-	@ManyToOne
-	@JoinColumn(name = "seller_id")
-	private Seller seller;
 	
 	public Sale(){}
 	
@@ -65,21 +55,5 @@ public class Sale {
 
 	public void setItems(List<SaleItem> items) {
 		this.items = items;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public Seller getSeller() {
-		return seller;
-	}
-
-	public void setSeller(Seller seller) {
-		this.seller = seller;
 	}
 }

@@ -22,4 +22,5 @@ export const routes: Routes = [
   {path: "sale-list", component: SaleListComponent},
   {path: "seller/edit/:id", component: SellerRegisterComponent},
   {path: "client/edit/:id", component: ClientRegisterComponent},
+  {path: "product/edit/:id", component: ProductRegisterComponent},
 ];

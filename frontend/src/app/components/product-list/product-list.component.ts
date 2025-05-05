@@ -15,10 +15,11 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductListComponent {
 list: Product[] = [];
-
 productService = inject(ProductService);
 router = inject(Router);
 showModal = false;
+deleteProductId: number | null = null;
+
 
 findAll(){
   this.productService.findAll().subscribe({
@@ -34,24 +35,29 @@ findAll(){
 }
 
 edit(product: Product){
-  console.log(product);
+  console.log(product)
   this.router.navigate(['/product/edit', product.id]);
 }
 
-deleteById(id: number){
+deleteById(){
+  if (this.deleteProductId !== null) {
   this.showModal = false;
-    this.productService.deleteProduct(id).subscribe({
+    this.productService.deleteProduct(this.deleteProductId).subscribe({
       next: () => {
-        this.list = this.list.filter(product => product.id !== id);
+        this.list = this.list.filter(product => product.id !== this.deleteProductId);
       },
       error: erro => {
         alert('Erro ao deletar produto!');
         console.error(erro);
       }
     });
+  } else {
+    console.error("ID do cliente não encontrado");
+  }
 }
 
-openConfirm() {
+openConfirm(productId: number) {
+  this.deleteProductId = productId;
   this.showModal = true;
 }
 

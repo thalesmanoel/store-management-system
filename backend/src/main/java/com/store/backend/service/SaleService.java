@@ -10,12 +10,10 @@ import org.springframework.stereotype.Service;
 import com.store.backend.dto.SaleDTO;
 import com.store.backend.dto.SaleItemDTO;
 import com.store.backend.dto.SaleItemViewDTO;
-import com.store.backend.entities.Client;
 import com.store.backend.entities.Product;
 import com.store.backend.entities.Sale;
 import com.store.backend.entities.SaleItem;
 import com.store.backend.entities.Seller;
-import com.store.backend.repository.ClientRepository;
 import com.store.backend.repository.ProductRepository;
 import com.store.backend.repository.SaleRepository;
 import com.store.backend.repository.SellerRepository;
@@ -29,9 +27,6 @@ public class SaleService {
 
     @Autowired
     private ProductRepository productRepository;
-
-    @Autowired
-    private ClientRepository clientRepository;
 
     @Autowired
     private SellerRepository sellerRepository;
@@ -52,16 +47,6 @@ public class SaleService {
 
         Sale sale = new Sale();
         sale.setTotalPrice(0.0); 
-
-   
-        Client client = clientRepository.findById(dto.getClientId())
-                .orElseThrow(() -> new ResourceNotFoundException(dto.getClientId()));
-        sale.setClient(client);
-
- 
-        Seller seller = sellerRepository.findById(dto.getSellerId())
-                .orElseThrow(() -> new ResourceNotFoundException(dto.getSellerId()));
-        sale.setSeller(seller);
 
         List<SaleItem> saleItems = new ArrayList<>();
 
@@ -100,12 +85,9 @@ public class SaleService {
         List<SaleItemViewDTO> viewDTOList = new ArrayList<>();
 
         for (Sale sale : sales) {
-            String clientName = sale.getClient().getName();
-
             for (SaleItem item : sale.getItems()) {
                 SaleItemViewDTO dto = new SaleItemViewDTO(
                     sale.getId(),
-                    clientName,
                     item.getProduct().getName(),
                     item.getQuantity(),
                     item.getUnitPrice(),
@@ -117,8 +99,6 @@ public class SaleService {
 
         return viewDTOList;
     }
-
-
 
     public void deleteSale(Long id) {
         if (saleRepository.existsById(id)) {

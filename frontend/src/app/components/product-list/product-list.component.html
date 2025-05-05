@@ -21,13 +21,13 @@
         <td>{{product.price}}</td>
         <td class="btn-edit-delete">
           <button type="button" (click)="edit(product)">Editar</button>
-          <button type="button" class="delete" (click)="openConfirm()">Deletar</button>
+          <button type="button" class="delete" (click)="openConfirm(product.id)">Deletar</button>
         </td>
       </tr>
 
       <app-confirm-delete
         [show]="showModal"
-        (confirm)="deleteById(product.id)"
+        (confirm)="deleteById()"
         (cancel)="showModal = false"
         [message]="'Você tem certeza que deseja deletar esse item?'">
       </app-confirm-delete>

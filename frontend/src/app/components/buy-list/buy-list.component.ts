@@ -4,8 +4,6 @@ import { ProductService } from '../../services/product.service';
 import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent } from "../header/header.component";
 import { CommonModule } from '@angular/common';
-import { Client } from '../../models/client';
-import { ClientService } from '../../services/client.service';
 import { SaleService } from '../../services/sale.service';
 import { Sale } from '../../models/sale';
 import { FormsModule } from '@angular/forms';
@@ -20,30 +18,15 @@ import { PurchaseComponent } from "../../modals/purchase/purchase.component";
 })
 export class BuyListComponent {
   list: Product[] = [];
-  clients: Client[] = [];
-  selectedClientId: number | null = null;
   showModal = false;
 
   constructor(
     private productService: ProductService,
-    private clientService: ClientService,
     private saleService: SaleService,
-    private router: Router
   ) {}
 
   ngOnInit() {
-    this.loadClients();
     this.loadProducts();
-  }
-
-  loadClients() {
-    this.clientService.findAll().subscribe({
-      next: (data) => (this.clients = data),
-      error: (err) => {
-        console.error('Erro ao buscar clientes', err);
-        alert('Erro ao carregar clientes');
-      },
-    });
   }
 
   loadProducts() {
@@ -87,10 +70,6 @@ export class BuyListComponent {
   }
 
   finalizePurchase() {
-    if (!this.selectedClientId) {
-      alert('Selecione um cliente antes de finalizar a compra');
-      return;
-    }
 
     const hasValidProduct = this.list.some(p => (p.quantity ?? 0) > 0);
     if (!hasValidProduct) {
@@ -99,8 +78,6 @@ export class BuyListComponent {
     }
 
     const saleData = {
-      clientId: this.selectedClientId,
-      sellerId: 10,
       items: this.list
         .filter(p => (p.quantity ?? 0) > 0)
         .map(p => ({

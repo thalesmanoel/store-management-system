@@ -6,9 +6,7 @@
     <thead>
       <tr>
         <th>NOME</th>
-        <th>EMAIL
-          <!--<button (click)="ordenarPorPreco()">Ordenar ▼</button>-->
-        </th>
+        <th>EMAIL</th>
         <th>CPF</th>
         <th>AÇÕES</th>
       </tr>
@@ -21,13 +19,13 @@
         <td>{{client.cpf}}</td>
         <td class="btn-edit-delete">
           <button type="button" (click)="edit(client)">Editar</button>
-          <button type="button" class="delete" (click)="openConfirm()">Deletar</button>
+          <button type="button" class="delete" (click)="openConfirm(client.id)">Deletar</button>
         </td>
       </tr>
 
       <app-confirm-delete
         [show]="showModal"
-        (confirm)="deleteById(client.id)"
+        (confirm)="deleteById()"
         (cancel)="showModal = false"
         [message]="'Você tem certeza que deseja deletar esse item?'">
       </app-confirm-delete>
@@ -37,5 +35,3 @@
 
   <button [routerLink]="['/client-register']" routerLinkActive="router-link-active" >Adicionar cliente</button>
 </div>
-
-

@@ -15,10 +15,10 @@ import { ConfirmDeleteComponent } from "../../modals/confirm-delete/confirm-dele
 })
 export class SellerListComponent {
 list: Seller[] = [];
-
 sellerService = inject(SellerService);
 router = inject(Router);
 showModal = false;
+deleteSellerId: number | null = null;
 
 findAll(){
   this.sellerService.findAll().subscribe({
@@ -38,20 +38,25 @@ edit(seller: Seller){
   this.router.navigate(['/seller/edit', seller.id]);
 }
 
-deleteById(id: number){
+deleteById(){
+  if (this.deleteSellerId !== null) {
   this.showModal = false;
-    this.sellerService.deleteSeller(id).subscribe({
+    this.sellerService.deleteSeller(this.deleteSellerId).subscribe({
       next: () => {
-        this.list = this.list.filter(seller => seller.id !== id);
+        this.list = this.list.filter(seller => seller.id !== this.deleteSellerId);
       },
       error: erro => {
         alert('Erro ao deletar produto!');
         console.error(erro);
       }
     });
+  } else {
+    console.error("ID do cliente não encontrado");
+  }
 }
 
-openConfirm() {
+openConfirm(sellerId: number) {
+  this.deleteSellerId = sellerId;
   this.showModal = true;
 }
 

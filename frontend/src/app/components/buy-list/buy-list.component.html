@@ -39,14 +39,6 @@
   <div class="summary-section">
     <h3>Total Geral: {{ getTotal() | currency:'BRL':'symbol':'1.2-2' }}</h3>
 
-    <label for="client">Selecione o cliente:</label>
-    <select id="client" [(ngModel)]="selectedClientId">
-      <option [ngValue]="null" disabled>-- Selecione --</option>
-      <option *ngFor="let c of clients" [value]="c.id">
-        {{ c.name }}
-      </option>
-    </select>
-
     <button (click)="finalizePurchase()">Finalizar Compra</button>
 
     <app-purchase

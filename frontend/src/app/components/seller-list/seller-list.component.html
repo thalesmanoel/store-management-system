@@ -19,13 +19,13 @@
         <td>{{seller.registrationDate | date:'dd/MM/yyyy'}}</td>
         <td class="btn-edit-delete">
           <button type="button" (click)="edit(seller)">Editar</button>
-          <button type="button" class="delete" (click)="openConfirm()">Deletar</button>
+          <button type="button" class="delete" (click)="openConfirm(seller.id)">Deletar</button>
         </td>
       </tr>
 
       <app-confirm-delete
         [show]="showModal"
-        (confirm)="deleteById(seller.id)"
+        (confirm)="deleteById()"
         (cancel)="showModal = false"
         [message]="'Você tem certeza que deseja deletar esse item?'">
       </app-confirm-delete>
