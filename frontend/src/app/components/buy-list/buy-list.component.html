@@ -48,5 +48,11 @@
     </select>
 
     <button (click)="finalizePurchase()">Finalizar Compra</button>
+
+    <app-purchase
+      [show]="showModal"
+      (confirm)="modalConfirm()"
+      [message]="'Sua compra foi realizada com sucesso!'">
+    </app-purchase>
   </div>
 </div>

@@ -9,11 +9,12 @@ import { ClientService } from '../../services/client.service';
 import { SaleService } from '../../services/sale.service';
 import { Sale } from '../../models/sale';
 import { FormsModule } from '@angular/forms';
+import { PurchaseComponent } from "../../modals/purchase/purchase.component";
 
 @Component({
   selector: 'app-buy-list',
   standalone: true,
-  imports: [HeaderComponent, RouterModule, CommonModule, FormsModule ],
+  imports: [HeaderComponent, RouterModule, CommonModule, FormsModule, PurchaseComponent],
   templateUrl: './buy-list.component.html',
   styleUrl: './buy-list.component.scss'
 })
@@ -21,6 +22,7 @@ export class BuyListComponent {
   list: Product[] = [];
   clients: Client[] = [];
   selectedClientId: number | null = null;
+  showModal = false;
 
   constructor(
     private productService: ProductService,
@@ -110,9 +112,8 @@ export class BuyListComponent {
     };
 
     this.saleService.registerSale(saleData).subscribe({
-      next: (response) => {
-        console.log('Resposta do backend:', response);
-        alert('Compra finalizada com sucesso!');
+      next: () => {
+        this.showModal = true;
       },
       error: (err) => {
         console.error('Erro ao finalizar compra', err);
@@ -121,4 +122,7 @@ export class BuyListComponent {
     });
   }
 
+  modalConfirm(){
+    this.showModal = false;
+  }
 }
