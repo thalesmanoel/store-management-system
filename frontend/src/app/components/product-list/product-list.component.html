@@ -18,7 +18,7 @@
         <td>{{product.name}}</td>
         <td>{{product.registrationDate | date:'dd/MM/yyyy'}}</td>
         <td>{{product.stock}}</td>
-        <td>{{product.price}}</td>
+        <td>{{product.price | currency:'BRL'}}</td>
         <td class="btn-edit-delete">
           <button type="button" (click)="edit(product)">Editar</button>
           <button type="button" class="delete" (click)="openConfirm(product.id)">Deletar</button>

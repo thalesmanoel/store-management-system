@@ -4,9 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.store.backend.entities.Client;
+import com.store.backend.dto.ClientRequestDTO;
+import com.store.backend.dto.ClientResponseDTO;
 import com.store.backend.service.ClientService;
 
 @RestController
@@ -14,35 +23,31 @@ import com.store.backend.service.ClientService;
 @CrossOrigin("http://localhost:4200/")
 public class ClientController {
 
-    @Autowired
+	@Autowired
     private ClientService clientService;
 
     @GetMapping("/get")
-    public ResponseEntity<List<Client>> findAll() {
-        List<Client> list = clientService.findAll();
-        return ResponseEntity.ok().body(list);
+    public ResponseEntity<List<ClientResponseDTO>> findAll() {
+        return ResponseEntity.ok(clientService.findAll());
     }
 
-    @GetMapping(value="/get/{id}")
-    public ResponseEntity<Client> findById(@PathVariable("id") Long id) {
-        Client obj = clientService.findById(id);
-        return ResponseEntity.ok().body(obj);
+    @GetMapping("/get/{id}")
+    public ResponseEntity<ClientResponseDTO> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(clientService.findById(id));
     }
 
-    @PostMapping(value = "/post")
-    public ResponseEntity<Client> registerClient(@RequestBody Client client) {
-        Client createdClient = clientService.registerClient(client);
-        return ResponseEntity.ok(createdClient);
+    @PostMapping("/post")
+    public ResponseEntity<ClientResponseDTO> registerClient(@RequestBody ClientRequestDTO dto) {
+        return ResponseEntity.ok(clientService.registerClient(dto));
     }
-    
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<Client> update(@PathVariable("id") Long id, @RequestBody Client obj) {
-        obj = clientService.updateClient(id, obj);
-        return ResponseEntity.ok().body(obj);
+    public ResponseEntity<ClientResponseDTO> update(@PathVariable Long id, @RequestBody ClientRequestDTO dto) {
+        return ResponseEntity.ok(clientService.updateClient(id, dto));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
         clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
     }

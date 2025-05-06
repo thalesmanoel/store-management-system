@@ -4,9 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.store.backend.entities.Product;
+import com.store.backend.dto.ProductRequestDTO;
+import com.store.backend.dto.ProductResponseDTO;
 import com.store.backend.service.ProductService;
 
 @RestController
@@ -14,31 +23,31 @@ import com.store.backend.service.ProductService;
 @CrossOrigin("http://localhost:4200/")
 public class ProductController {
 
-    @Autowired
+	@Autowired
     private ProductService productService;
 
     @GetMapping("/get")
-    public ResponseEntity<List<Product>> findAll() {
-        List<Product> list = productService.findAll();
+    public ResponseEntity<List<ProductResponseDTO>> findAll() {
+        List<ProductResponseDTO> list = productService.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value="/get/{id}")
-    public ResponseEntity<Product> findById(@PathVariable("id") Long id) {
-        Product obj = productService.findById(id);
+    public ResponseEntity<ProductResponseDTO> findById(@PathVariable("id") Long id) {
+        ProductResponseDTO obj = productService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping(value = "/post")
-    public ResponseEntity<Product> registerProduct(@RequestBody Product product) {
-        Product createdProduct = productService.registerProduct(product);
-        return ResponseEntity.ok(createdProduct);
+    public ResponseEntity<ProductResponseDTO> registerProduct(@RequestBody ProductRequestDTO dto) {
+        ProductResponseDTO created = productService.registerProduct(dto);
+        return ResponseEntity.ok(created);
     }
-    
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<Product> update(@PathVariable("id") Long id, @RequestBody Product obj) {
-        obj = productService.updateProduct(id, obj);
-        return ResponseEntity.ok().body(obj);
+    public ResponseEntity<ProductResponseDTO> update(@PathVariable("id") Long id, @RequestBody ProductRequestDTO dto) {
+        ProductResponseDTO updated = productService.updateProduct(id, dto);
+        return ResponseEntity.ok().body(updated);
     }
 
     @DeleteMapping("/delete/{id}")
