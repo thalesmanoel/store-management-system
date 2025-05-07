@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Sale } from '../models/sale';
 import { SaleItemView } from '../models/sale-item-view';
+import { environment } from '../../environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class SaleService {
 
   http = inject(HttpClient);
 
-    API = "http://localhost:8080/sale";
+     API = environment.apiUrl + "/sale";
 
     findAll(): Observable<Sale[]> {
       return this.http.get<Sale[]>(this.API+"/get");

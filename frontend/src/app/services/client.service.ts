@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from '../models/client';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ClientService {
 
   http = inject(HttpClient);
 
-  API = "http://localhost:8080/client";
+  API = environment.apiUrl + "/client";
 
   findAll(): Observable<Client[]> {
     return this.http.get<Client[]>(this.API+"/get");

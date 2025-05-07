@@ -20,7 +20,7 @@ import com.store.backend.service.SellerService;
 
 @RestController
 @RequestMapping(value="/seller")
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("*")
 public class SellerController {
 	@Autowired
     private SellerService sellerService;

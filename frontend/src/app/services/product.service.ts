@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ProductService {
 
   http = inject(HttpClient);
 
-    API = "http://localhost:8080/product";
+     API = environment.apiUrl + "/product";
 
     findAll(): Observable<Product[]> {
       return this.http.get<Product[]>(this.API+"/get");

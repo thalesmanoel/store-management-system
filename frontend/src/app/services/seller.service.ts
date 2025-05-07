@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Seller } from '../models/seller';
+import { environment } from '../../environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class SellerService {
 
   http = inject(HttpClient);
 
-  API = "http://localhost:8080/seller";
+   API = environment.apiUrl + "/seller";
 
   findAll(): Observable<Seller[]> {
     return this.http.get<Seller[]>(this.API+"/get");
