@@ -19,7 +19,7 @@ import com.store.backend.dto.ProductResponseDTO;
 import com.store.backend.service.ProductService;
 
 @RestController
-@RequestMapping(value = "/product")
+@RequestMapping(value = "/api/product")
 @CrossOrigin("*")
 public class ProductController {
 

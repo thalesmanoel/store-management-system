@@ -19,7 +19,7 @@ import com.store.backend.dto.SellerResponseDTO;
 import com.store.backend.service.SellerService;
 
 @RestController
-@RequestMapping(value="/seller")
+@RequestMapping(value="/api/seller")
 @CrossOrigin("*")
 public class SellerController {
 	@Autowired

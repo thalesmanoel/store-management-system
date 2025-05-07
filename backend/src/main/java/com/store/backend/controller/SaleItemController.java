@@ -19,7 +19,7 @@ import com.store.backend.entities.SaleItem;
 import com.store.backend.service.SaleItemService;
 
 @RestController
-@RequestMapping(value = "/saleitem")
+@RequestMapping(value = "/api/saleitem")
 @CrossOrigin("*")
 public class SaleItemController {
 

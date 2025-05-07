@@ -19,7 +19,7 @@ import com.store.backend.dto.ClientResponseDTO;
 import com.store.backend.service.ClientService;
 
 @RestController
-@RequestMapping(value = "/client")
+@RequestMapping(value = "/api/client")
 @CrossOrigin("*")
 public class ClientController {
 
