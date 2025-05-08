@@ -5,11 +5,12 @@ import { HeaderComponent } from "../header/header.component";
 import { Client } from '../../models/client';
 import { ClientService } from '../../services/client.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorModalComponent } from "../../modals/error-modal/error-modal.component";
 
 @Component({
   selector: 'app-client-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HeaderComponent],
+  imports: [CommonModule, ReactiveFormsModule, HeaderComponent, ErrorModalComponent],
   templateUrl: './client-register.component.html',
   styleUrl: './client-register.component.scss'
 })
@@ -26,6 +27,9 @@ export class ClientRegisterComponent {
 
   client: Client = new Client();
   isEditMode = false;
+  showModal = false;
+  showErrorModal = false;
+  errorMessage = '';
 
   clientService = inject(ClientService);
   router = inject(Router);
@@ -45,7 +49,8 @@ export class ClientRegisterComponent {
           });
         },
         error: (erro) => {
-          alert('Erro ao carregar os dados do cliente!');
+          this.errorMessage = 'Ocorreu algum erro.';
+          this.showErrorModal = true;
           console.error(erro);
         },
       });
@@ -78,7 +83,13 @@ export class ClientRegisterComponent {
         this.router.navigate(['/client-list']);
       },
       error: erro => {
-        alert('Erro ao salvar os dados!');
+        if (erro.status === 409) {
+            this.errorMessage = 'E-mail ou CPF já existente!';
+            this.showErrorModal = true;
+        } else {
+            this.errorMessage = 'Ocorreu algum erro.';
+            this.showErrorModal = true;
+        }
         console.error(erro);
       },
     });

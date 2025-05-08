@@ -2,6 +2,7 @@ package com.store.backend.entities;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -10,7 +11,8 @@ import jakarta.persistence.Table;
 public class Seller extends User{
 	private static final long serialVersionUID = 1L;
 	
-	private Date registrationDate;
+	@Column(nullable = false)
+    private Date registrationDate;
 
 	public Seller() {}
 	

@@ -13,15 +13,13 @@
         <div class="error" *ngIf="f.name.touched && f.name.invalid">É necessário inserir seu nome.</div>
 
         <input type="email" placeholder="Email" formControlName="email" />
-        <div class="error" *ngIf="f.email.touched && f.email.errors?.['required']">É necessário inserir seu e-mail.</div>
+        <div class="error" *ngIf="f.email.touched && f.email.errors?.['required']">É necessário inserir seu e-mail.
+        </div>
         <div class="error" *ngIf="f.email.touched && f.email.errors?.['email']">Endereço de e-mail inválido</div>
 
-        <input
-          type="password" [placeholder]="isEditMode
+        <input type="password" [placeholder]="isEditMode
           ? 'Senha (deixe em branco para manter a atual)'
-          : 'Senha'"
-          formControlName="password"
-        />
+          : 'Senha'" formControlName="password" />
         <div class="error" *ngIf="f.password.touched && f.password.invalid && !isEditMode">
           É necessário inserir sua senha.
         </div>
@@ -32,4 +30,9 @@
       </form>
     </div>
   </div>
+  <app-error-modal
+    [show]="showErrorModal"
+    [message]="errorMessage"
+    (confirm)="showErrorModal = false">
+  </app-error-modal>
 </div>

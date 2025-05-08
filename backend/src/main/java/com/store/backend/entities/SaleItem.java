@@ -2,6 +2,7 @@ package com.store.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,17 +18,20 @@ public class SaleItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Integer quantity;
-	private Double unitPrice;
+	@Column(nullable = false)
+    private Integer quantity;
 	
-	@ManyToOne
-	@JoinColumn(name = "product_id") 
-	private Product product;
-	
-	@ManyToOne
-	@JoinColumn(name = "sale_id")
-	@JsonBackReference
-	private Sale sale;
+    @Column(nullable = false)
+    private Double unitPrice;
+    
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+    
+    @ManyToOne
+    @JoinColumn(name = "sale_id", nullable = false)
+    @JsonBackReference
+    private Sale sale;
 	
 	public SaleItem() {}
 	

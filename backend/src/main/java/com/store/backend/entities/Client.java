@@ -1,5 +1,6 @@
 package com.store.backend.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -8,7 +9,8 @@ import jakarta.persistence.Table;
 public class Client extends User{
 	private static final long serialVersionUID = 1L;
 	
-	private String cpf;
+	@Column(unique = true, nullable = false)
+    private String cpf;
 	
 	public Client() {}
 	

@@ -5,11 +5,12 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { HeaderComponent } from "../header/header.component";
 import { Seller } from '../../models/seller';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorModalComponent } from "../../modals/error-modal/error-modal.component";
 
 @Component({
   selector: 'app-seller-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HeaderComponent],
+  imports: [CommonModule, ReactiveFormsModule, HeaderComponent, ErrorModalComponent],
   templateUrl: './seller-register.component.html',
   styleUrl: './seller-register.component.scss'
 })
@@ -26,6 +27,9 @@ export class SellerRegisterComponent {
 
   seller: Seller = new Seller();
   isEditMode = false;
+  showModal = false;
+  showErrorModal = false;
+  errorMessage = '';
 
   sellerService = inject(SellerService);
   router = inject(Router);
@@ -45,7 +49,8 @@ export class SellerRegisterComponent {
           });
         },
         error: (erro) => {
-          alert('Erro ao carregar os dados do vendedor!');
+          this.errorMessage = 'Ocorreu algum erro.';
+          this.showErrorModal = true;
           console.error(erro);
         },
       });
@@ -78,7 +83,13 @@ export class SellerRegisterComponent {
         this.router.navigate(['/seller-list']);
       },
       error: erro => {
-        alert('Erro ao salvar os dados!');
+        if (erro.status === 409) {
+            this.errorMessage = 'E-mail já existente!';
+            this.showErrorModal = true;
+        } else {
+            this.errorMessage = 'Ocorreu algum erro.';
+            this.showErrorModal = true;
+        }
         console.error(erro);
       },
     });

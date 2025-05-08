@@ -26,7 +26,8 @@ export class SaleListComponent implements OnInit {
       next: data => this.list = data,
       error: err => {
         console.error('Erro ao buscar itens de venda', err);
-        alert('Erro ao carregar os itens de venda');
+        this.errorMessage = 'Erro ao carregar os itens de venda';
+        this.showErrorModal = true;
       }
     });
   }
