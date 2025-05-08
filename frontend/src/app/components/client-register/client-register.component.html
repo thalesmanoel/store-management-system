@@ -15,7 +15,7 @@
         <div class="error" *ngIf="f.email.touched && f.email.errors?.['required']">É necessário inserir seu e-mail.</div>
         <div class="error" *ngIf="f.email.touched && f.email.errors?.['email']">Endereço de email inválido.</div>
 
-        <input type="text" placeholder="CPF" formControlName="cpf" />
+        <input type="number" placeholder="CPF" formControlName="cpf" />
         <div class="error" *ngIf="f.cpf.touched && f.cpf.invalid">É necessário inserir seu CPF.</div>
 
         <input type="password" placeholder="Senha" formControlName="password" />

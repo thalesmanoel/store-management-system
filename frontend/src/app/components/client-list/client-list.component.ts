@@ -4,11 +4,12 @@ import { ClientService } from '../../services/client.service';
 import { Client } from '../../models/client';
 import { Router, RouterModule, } from '@angular/router';
 import { ConfirmDeleteComponent } from "../../modals/confirm-delete/confirm-delete.component";
+import { ErrorModalComponent } from "../../modals/error-modal/error-modal.component";
 
 @Component({
   selector: 'app-client-list',
   standalone: true,
-  imports: [HeaderComponent, RouterModule, ConfirmDeleteComponent],
+  imports: [HeaderComponent, RouterModule, ConfirmDeleteComponent, ErrorModalComponent],
   templateUrl: './client-list.component.html',
   styleUrl: './client-list.component.scss'
 })
@@ -18,6 +19,8 @@ export class ClientListComponent {
   clientService = inject(ClientService);
   router = inject(Router);
   showModal = false;
+  showErrorModal = false;
+  errorMessage = '';
 
   findAll(){
     this.clientService.findAll().subscribe({
@@ -27,7 +30,8 @@ export class ClientListComponent {
       },
       error: erro => {
         console.error('Erro ao buscar os dados:', erro);
-        alert("Ocorreu algum erro!");
+        this.errorMessage = 'Ocorreu algum erro.';
+        this.showErrorModal = true;
       },
     });
   }
@@ -44,7 +48,8 @@ export class ClientListComponent {
           this.list = this.list.filter(client => client.id !== this.deleteClientId);
         },
         error: erro => {
-          alert('Erro ao deletar cliente!');
+          this.errorMessage = 'Ocorreu algum erro.';
+          this.showErrorModal = true;
           console.error(erro);
         }
       });

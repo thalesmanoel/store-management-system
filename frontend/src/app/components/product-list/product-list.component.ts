@@ -5,11 +5,12 @@ import { Product } from '../../models/product';
 import { Router, RouterModule } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
+import { ErrorModalComponent } from "../../modals/error-modal/error-modal.component";
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [HeaderComponent, ConfirmDeleteComponent, RouterModule, CommonModule],
+  imports: [HeaderComponent, ConfirmDeleteComponent, RouterModule, CommonModule, ErrorModalComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
@@ -18,6 +19,8 @@ list: Product[] = [];
 productService = inject(ProductService);
 router = inject(Router);
 showModal = false;
+showErrorModal = false;
+errorMessage = '';
 deleteProductId: number | null = null;
 
 
@@ -29,7 +32,8 @@ findAll(){
     },
     error: erro => {
       console.error('Erro ao buscar os dados:', erro);
-      alert("Ocorreu algum erro!");
+      this.errorMessage = 'Ocorreu algum erro.';
+      this.showErrorModal = true;
     },
   });
 }
@@ -47,12 +51,18 @@ deleteById(){
         this.list = this.list.filter(product => product.id !== this.deleteProductId);
       },
       error: erro => {
-        alert('Erro ao deletar produto!');
+        if (erro.status === 409) {
+          this.errorMessage = erro.error;
+          this.showErrorModal = true;
+        } else {
+          this.errorMessage = 'Ocorreu algum erro.';
+          this.showErrorModal = true;
+        }
         console.error(erro);
       }
     });
   } else {
-    console.error("ID do cliente não encontrado");
+    console.error("ID não encontrado");
   }
 }
 

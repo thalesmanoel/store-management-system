@@ -36,4 +36,10 @@
   </table>
 
   <button [routerLink]="['/product-register']" routerLinkActive="router-link-active" >Adicionar produto</button>
+
+  <app-error-modal
+    [show]="showErrorModal"
+    [message]="errorMessage"
+    (confirm)="showErrorModal = false">
+  </app-error-modal>
 </div>

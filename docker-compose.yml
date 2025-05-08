@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   mysql:
@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: verysecret
       MYSQL_USER: myuser
     ports:
-      - '3306:3306'
+      - "3306:3306"
     networks:
       - app-network
     volumes:
@@ -26,7 +26,7 @@ services:
       mysql:
         condition: service_healthy
     ports:
-      - '8080:8080'
+      - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydatabase
       SPRING_DATASOURCE_USERNAME: myuser
@@ -37,7 +37,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - '4200:80'
+      - "4200:80"
     depends_on:
       - backend
     networks:
