@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="container">
-  <h1>Lista de produtos</h1>
+  <h1>Histórico de vendas</h1>
   <table>
     <thead>
       <tr>
@@ -9,6 +9,7 @@
         <th>QUANTIDADE</th>
         <th>VALOR UNITÁRIO</th>
         <th>VALOR TOTAL</th>
+        <th>AÇÃO</th>
       </tr>
     </thead>
     <tbody>
@@ -18,11 +19,29 @@
         <td>{{ item.quantity }}</td>
         <td>{{ item.unitPrice | currency:'BRL' }}</td>
         <td>{{ item.subtotal | currency:'BRL' }}</td>
+        <td>
+          <div class="btn-delete" (click)="openConfirm(item.saleId)">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FF0000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+          </div>
+        </td>
       </tr>
+
+      <app-confirm-delete
+        [show]="showModal"
+        (confirm)="deleteById()"
+        (cancel)="showModal = false"
+        [message]="'Você tem certeza que deseja deletar esse item?'">
+      </app-confirm-delete>
     }
     </tbody>
   </table>
 
+  <app-error-modal
+    [show]="showErrorModal"
+    [message]="errorMessage"
+    (confirm)="showErrorModal = false">
+  </app-error-modal>
+</div>
 
 
 

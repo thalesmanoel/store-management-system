@@ -37,10 +37,14 @@ public class ClientService {
     }
 
     public ClientResponseDTO registerClient(ClientRequestDTO dto) {
+    	if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("A senha é obrigatória para se cadastrar.");
+        }
+    	
         Client client = new Client();
         client.setName(dto.getName());
         client.setEmail(dto.getEmail());
-        client.setPassword(dto.getPassword()); // senha salva em texto puro (por enquanto)
+        client.setPassword(dto.getPassword());
         client.setCpf(dto.getCpf());
 
         Client saved = clientRepository.save(client);
@@ -55,8 +59,11 @@ public class ClientService {
 
             client.setName(dto.getName());
             client.setEmail(dto.getEmail());
-            client.setPassword(dto.getPassword());
             client.setCpf(dto.getCpf());
+            
+            if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
+                client.setPassword(dto.getPassword());
+            }
 
             Client updated = clientRepository.save(client);
             return toDTO(updated);

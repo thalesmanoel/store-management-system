@@ -36,6 +36,10 @@ public class SellerService {
     }
 
     public SellerResponseDTO registerSeller(SellerRequestDTO dto) {
+    	if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("A senha é obrigatória para se cadastrar.");
+        }
+    	
         Seller seller = new Seller();
         seller.setName(dto.getName());
         seller.setEmail(dto.getEmail());
@@ -54,9 +58,12 @@ public class SellerService {
 
             seller.setName(dto.getName());
             seller.setEmail(dto.getEmail());
-            seller.setPassword(dto.getPassword());
             seller.setRegistrationDate(dto.getRegistrationDate());
-
+            
+            if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
+                seller.setPassword(dto.getPassword());
+            }
+            
             Seller updated = sellerRepository.save(seller);
             return toDTO(updated);
         } else {

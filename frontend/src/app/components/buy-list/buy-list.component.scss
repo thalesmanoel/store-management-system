@@ -55,6 +55,14 @@ td {
   cursor: pointer;
 }
 
+.summary-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .delete{
   background-color: red;
 }

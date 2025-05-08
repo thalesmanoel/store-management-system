@@ -19,12 +19,13 @@ export class ClientRegisterComponent {
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     cpf: ['', Validators.required],
-    password: ['', Validators.required],
+    password: [''],
   });
 
   constructor(private fb: FormBuilder) {}
 
   client: Client = new Client();
+  isEditMode = false;
 
   clientService = inject(ClientService);
   router = inject(Router);
@@ -33,6 +34,7 @@ export class ClientRegisterComponent {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
+      this.isEditMode = true;
       this.clientService.findById(+id).subscribe({
         next: (client) => {
           this.client = client;
@@ -40,7 +42,6 @@ export class ClientRegisterComponent {
             name: client.name,
             email: client.email,
             cpf: client.cpf,
-            password: client.password
           });
         },
         error: (erro) => {
@@ -48,6 +49,9 @@ export class ClientRegisterComponent {
           console.error(erro);
         },
       });
+    } else {
+      this.form.get('password')?.setValidators([Validators.required]);
+      this.form.get('password')?.updateValueAndValidity();
     }
   }
 
@@ -62,11 +66,11 @@ export class ClientRegisterComponent {
       name: this.form.value.name!,
       email: this.form.value.email!,
       cpf: this.form.value.cpf!,
-      password: this.form.value.password!,
+      password: this.form.value.password || undefined,
     };
 
-    const request = this.client.id
-      ? this.clientService.updateClient(clientData, this.client.id)
+    const request = this.isEditMode
+      ? this.clientService.updateClient(clientData, this.client.id!)
       : this.clientService.registerClient(clientData);
 
     request.subscribe({

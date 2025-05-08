@@ -41,7 +41,7 @@ export class ClientListComponent {
   }
 
   deleteById() {
-    if (this.deleteClientId !== null) {
+    if (this.deleteClientId !== null){
       this.showModal = false;
       this.clientService.deleteClient(this.deleteClientId).subscribe({
         next: () => {

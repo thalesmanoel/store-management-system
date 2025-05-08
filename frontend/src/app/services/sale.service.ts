@@ -36,6 +36,10 @@ export class SaleService {
       );
   }
 
+  deleteSale(id: number){
+    return this.http.delete<void>(this.API+"/delete/"+id);
+  }
+
   getAllSaleItems(): Observable<SaleItemView[]> {
     return this.http.get<SaleItemView[]>(this.API+"/get/items-view");
   }

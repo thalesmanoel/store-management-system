@@ -28,6 +28,15 @@ export class ClientService {
   }
 
   updateClient(client: Client, id: number): Observable<Client[]> {
+    const payload: any = {
+      name: client.name,
+      email: client.email,
+      cpf: client.cpf
+    };
+    if (client.password) {
+      payload.password = client.password;
+    }
+    
     return this.http.put<Client[]>(this.API+"/update/"+id, client);
   }
 

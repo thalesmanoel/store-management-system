@@ -28,6 +28,14 @@ export class SellerService {
   }
 
   updateSeller(seller: Seller, id: number): Observable<Seller[]> {
+    const payload: any = {
+      name: seller.name,
+      email: seller.email,
+      registrationDate: seller.registrationDate
+    };
+    if (seller.password) {
+      payload.password = seller.password;
+    }
     return this.http.put<Seller[]>(this.API+"/update/"+id, seller);
   }
 

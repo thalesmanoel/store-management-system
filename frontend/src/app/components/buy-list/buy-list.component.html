@@ -39,7 +39,9 @@
   <div class="summary-section">
     <h3>Total Geral: {{ getTotal() | currency:'BRL':'symbol':'1.2-2' }}</h3>
 
-    <button (click)="finalizePurchase()">Finalizar Compra</button>
+    <div class="btn-purchase">
+      <button (click)="finalizePurchase()">Finalizar Compra</button>
+    </div>
 
     <app-purchase
       [show]="showModal"

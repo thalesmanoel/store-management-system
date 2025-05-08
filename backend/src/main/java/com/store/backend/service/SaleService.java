@@ -13,10 +13,8 @@ import com.store.backend.dto.SaleItemViewDTO;
 import com.store.backend.entities.Product;
 import com.store.backend.entities.Sale;
 import com.store.backend.entities.SaleItem;
-import com.store.backend.entities.Seller;
 import com.store.backend.repository.ProductRepository;
 import com.store.backend.repository.SaleRepository;
-import com.store.backend.repository.SellerRepository;
 import com.store.backend.service.exception.ResourceNotFoundException;
 
 @Service
@@ -27,9 +25,6 @@ public class SaleService {
 
     @Autowired
     private ProductRepository productRepository;
-
-    @Autowired
-    private SellerRepository sellerRepository;
     
 
     public List<Sale> findAll() {

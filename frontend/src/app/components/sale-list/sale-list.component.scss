@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 10px;
@@ -39,4 +39,8 @@ th {
 
 td {
   border-top: 1px solid #ddd;
+}
+
+.btn-delete{
+  cursor: pointer;
 }

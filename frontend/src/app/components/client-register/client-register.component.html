@@ -18,10 +18,17 @@
         <input type="number" placeholder="CPF" formControlName="cpf" />
         <div class="error" *ngIf="f.cpf.touched && f.cpf.invalid">É necessário inserir seu CPF.</div>
 
-        <input type="password" placeholder="Senha" formControlName="password" />
-        <div class="error" *ngIf="f.password.touched && f.password.invalid">É necessário inserir sua senha</div>
+        <input
+          type="password" [placeholder]="isEditMode
+          ? 'Senha (deixe em branco para manter a atual)'
+          : 'Senha'"
+          formControlName="password"
+        />
+        <div class="error" *ngIf="f.password.touched && f.password.invalid && !isEditMode">
+          É necessário inserir sua senha.
+        </div>
 
-        <button type="submit">Register</button>
+        <button type="submit">Registrar</button>
       </form>
     </div>
   </div>
