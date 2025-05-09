@@ -66,6 +66,8 @@ http://localhost:4200
 
 - Ao entrar nessa opção você pode selecionar o botão "Adicionar cliente", para criar um cliente, e assim você será redirecionado para a tela de cadastro, e poderá também, editar ou excluir depois de criado, através dos ícones na coluna de ações.
 
+- Essa estrutura de CRUD é a mesma para Clientes, Vendedores e Produtos.
+
 - É possível também realizar compras a partir de produtos cadastrados na plataforma. Você pode colocar a quantidade que você quer de cada item, e com isso, será calculado o total da sua compra. Em seguida é descontado o estoque dos produtos nos quais você comprou.
 
 <img src="images-readme/buy-list.png" alt="Tela de compra" width="800"/>
