@@ -36,30 +36,42 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 
 ### Passos para a execução:
 1.**Clone o repositório com esse comando:**
-``git clone https://github.com/thalesmanoel/store-management-system``
+```bash
+git clone https://github.com/thalesmanoel/store-management-system
+```
 
 2. **Entre no diretório que está o projeto**
-``cd store-management-system``
+```bash
+cd store-management-system
+```
 
-3. **Abra o seu terminal e rode o comando do Docker abaixo:**
-``docker-compose up --build``
+4. **Abra o seu terminal e rode o comando do Docker abaixo:**
+```bash
+docker-compose up --build
+```
 
-4. **Abra o navegador e acesse:**
-``http://localhost:4200``
+6. **Abra o navegador e acesse:**
+```bash
+http://localhost:4200
+```
 
-5. **Feito isso você poderá explorar o sistema e suas funcionalidades, começando com o menu inicial:**
-<img src="images-readme/menu.png" alt="Tela de menu" width="800"/>
+8. **Feito isso você poderá explorar o sistema e suas funcionalidades, começando com o menu inicial**
 
 ## Explorando as funcionalidades:
+<img src="images-readme/menu.png" alt="Tela de menu" width="800"/>
+
 - Na tela de menu você pode escolher inicialmente fazer a criação de um cliente, vendedor ou produto. Ao clicar na opção de Gerenciamento de clientes, você será redirecionado para essa tela:
+
 <img src="images-readme/client-list.png" alt="Tela da lista de clientes" width="800"/>
 
 - Ao entrar nessa opção você pode selecionar o botão "Adicionar cliente", para criar um cliente, e assim você será redirecionado para a tela de cadastro, e poderá também, editar ou excluir depois de criado, através dos ícones na coluna de ações.
 
 - É possível também realizar compras a partir de produtos cadastrados na plataforma. Você pode colocar a quantidade que você quer de cada item, e com isso, será calculado o total da sua compra. Em seguida é descontado o estoque dos produtos nos quais você comprou.
+
 <img src="images-readme/buy-list.png" alt="Tela de compra" width="800"/>
 
 - Agora você pode voltar ao menu inicial e selecionar a opção de "Histórico de vendas", nessa tela você poderá vizualizar os produtos comprados, as quantidades de cada produto e o total de cada compra.
+
 <img src="images-readme/sale-list.png" alt="Tela de compra" width="800"/>
 
 ## Endpoints:
@@ -69,6 +81,10 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 - **PUT:**   /api/client/update/{id}
 - **DELETE** /api/client/delete/{id}
 
+## Contatos
+Thales Carrion - thalesdesenvolvedor@gmail.com
+
+Acesse meu [Linkedin](https://www.linkedin.com/in/thales-carrion/)
 
 
 
