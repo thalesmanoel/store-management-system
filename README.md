@@ -7,7 +7,7 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 ### Operações CRUD:
 - **Gerenciamento de clientes**
 - **Gerenciamento de vendedores**
-- **Gerenciamento de produtos.** *Obs: Um produto associado a uma venda não pode ser excluído. Isso é uma medida de integridade de dados para garantir que os registros de vendas mantenham consistência e histórico completo.*
+- **Gerenciamento de produtos.** 
 
 ### Operações de vendas:
 - **Registro de compras e vendas:** ao entrar na área de realizar uma compra, o usuário pode escolher um produto cadastrado na plataforma para comprar e a quantidade de cada produto que deseja. A plataforma irá calcular o subtotal de cada produto, e o total geral de sua compra.
@@ -66,7 +66,7 @@ http://localhost:4200
 
 - Ao entrar nessa opção você pode selecionar o botão "Adicionar cliente", para criar um cliente, e assim você será redirecionado para a tela de cadastro, e poderá também, editar ou excluir depois de criado, através dos ícones na coluna de ações.
 
-- Essa estrutura de CRUD é a mesma para Clientes, Vendedores e Produtos.
+- Essa estrutura de CRUD é a mesma para Clientes, Vendedores e Produtos. *Obs: Um produto associado a uma venda não pode ser excluído. Isso é uma medida de integridade de dados para garantir que os registros de vendas mantenham consistência e histórico completo.*
 
 - É possível também realizar compras a partir de produtos que você cadastrar na plataforma. Você pode colocar a quantidade que você quer de cada item, e com isso, será calculado o total da sua compra. Em seguida é descontado o estoque dos produtos nos quais você comprou.
 
