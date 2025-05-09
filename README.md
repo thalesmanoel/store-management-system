@@ -5,4 +5,11 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 
 ## Funcionalidades:
 ### Operações CRUD:
-- **Gerenciamento de clientes:** É possível vizualizar, criar, editar e apagar clientes da lista.
+- Gerenciamento de clientes
+- Gerenciamento de vendedores
+- Gerenciamento de produtos. Obs: Um produto associado a uma venda não pode ser excluído. Isso é uma medida de integridade de dados para garantir que os registros de vendas mantenham consistência e histórico completo.
+
+### Operações de vendas
+- Registro de compras e vendas: ao entrar na área de realizar uma compra, o usuário pode escolher um produto cadastrado na plataforma para comprar e a quantidade de cada produto que deseja. A plataforma irá calcular o subtotal de cada produto, e o total geral de sua compra.
+- Atualização de estoque: Ao efetuar uma compra, a quantidade comprada de cada produto é automaticamente descontada do estoque. O sistema mantém o controle do estoque em tempo real com base nas vendas registradas.
+
