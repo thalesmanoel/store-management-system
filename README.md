@@ -68,7 +68,7 @@ http://localhost:4200
 
 - Essa estrutura de CRUD é a mesma para Clientes, Vendedores e Produtos.
 
-- É possível também realizar compras a partir de produtos cadastrados na plataforma. Você pode colocar a quantidade que você quer de cada item, e com isso, será calculado o total da sua compra. Em seguida é descontado o estoque dos produtos nos quais você comprou.
+- É possível também realizar compras a partir de produtos que você cadastrar na plataforma (para criar algum produto, basta entrar na opção de "Gerenciamento de produtos" no menu inicial). Você pode colocar a quantidade que você quer de cada item, e com isso, será calculado o total da sua compra. Em seguida é descontado o estoque dos produtos nos quais você comprou.
 
 <img src="images-readme/buy-list.png" alt="Tela de compra" width="800"/>
 
