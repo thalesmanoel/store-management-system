@@ -48,6 +48,9 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 ``http://localhost:4200``
 
 5. **Feito isso você poderá explorar o sistema e suas funcionalidades, começando com o menu inicial:**
+   ![Tela de menu](images-readme/menu.png)
+
+## Explorando as funcionalidades:
 
 
 
