@@ -51,6 +51,10 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
    ![Tela de menu](images-readme/menu.png)
 
 ## Explorando as funcionalidades:
+- Na tela de menu você pode escolher inicialmente fazer a criação de um cliente, vendedor ou produto. Ao clicar na opção de Gerenciamento de clientes, você será redirecionado para essa tela:
+![Tela da lista de clientes](images-readme/client-list.png)
+
+- Ao entrar nessa opção você pode selecionar o botão "Adicionar cliente", para criar um cliente, e assim você será redirecionado para a tela de cadastro, e poderá também, editar ou excluir depois de criado, através dos ícones na coluna de ações.
 
 
 
