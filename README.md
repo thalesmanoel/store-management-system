@@ -77,6 +77,10 @@ http://localhost:4200
 <img src="images-readme/sale-list.png" alt="Tela de compra" width="800"/>
 
 ## Endpoints:
+- Para testar as enpoints, é possível acessando com o caminho abaixo, completando com cada requisição:
+```bash
+http://localhost:8080
+```
 ### Cliente
 - **GET:**   /api/client/get
 - **GET:**   /api/client/get/{id}
