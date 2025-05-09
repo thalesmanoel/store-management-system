@@ -77,11 +77,26 @@ http://localhost:4200
 <img src="images-readme/sale-list.png" alt="Tela de compra" width="800"/>
 
 ## Endpoints:
+### Cliente
 - **GET:**   /api/client/get
 - **GET:**   /api/client/get/{id}
 - **POST:**  /api/client/post
 - **PUT:**   /api/client/update/{id}
 - **DELETE** /api/client/delete/{id}
+  
+### Vendedor
+- **GET:**   /api/seller/get
+- **GET:**   /api/seller/get/{id}
+- **POST:**  /api/seller/post
+- **PUT:**   /api/seller/update/{id}
+- **DELETE** /api/seller/delete/{id}
+
+### Produto
+- **GET:**   /api/product/get
+- **GET:**   /api/product/get/{id}
+- **POST:**  /api/product/post
+- **PUT:**   /api/product/update/{id}
+- **DELETE** /api/product/delete/{id}
 
 ## Contatos
 - E-mail: thalesdesenvolvedor@gmail.com
