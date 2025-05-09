@@ -62,6 +62,15 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 - Agora você pode voltar ao menu inicial e selecionar a opção de "Histórico de vendas", nessa tela você poderá vizualizar os produtos comprados, as quantidades de cada produto e o total de cada compra.
 <img src="images-readme/sale-list.png" alt="Tela de compra" width="800"/>
 
+## Endpoints:
+- **GET:**   /api/client/get
+- **GET:**   /api/client/get/{id}
+- **POST:**  /api/client/post
+- **PUT:**   /api/client/update/{id}
+- **DELETE** /api/client/delete/{id}
+
+
+
 
   
 
