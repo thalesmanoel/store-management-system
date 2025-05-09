@@ -82,9 +82,9 @@ http://localhost:4200
 - **DELETE** /api/client/delete/{id}
 
 ## Contatos
-Thales Carrion - thalesdesenvolvedor@gmail.com
-
-Acesse meu [Linkedin](https://www.linkedin.com/in/thales-carrion/)
+- E-mail: thalesdesenvolvedor@gmail.com
+- Acesse meu [Linkedin](https://www.linkedin.com/in/thales-carrion/)
+- WhatsApp: (15)992717403
 
 
 
