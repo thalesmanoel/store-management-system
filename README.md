@@ -48,7 +48,7 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 ``http://localhost:4200``
 
 5. **Feito isso você poderá explorar o sistema e suas funcionalidades, começando com o menu inicial:**
-   ![Tela de menu](images-readme/menu.png)
+   <img src="images/menu.png" alt="Tela de menu" width="500"/>
 
 ## Explorando as funcionalidades:
 - Na tela de menu você pode escolher inicialmente fazer a criação de um cliente, vendedor ou produto. Ao clicar na opção de Gerenciamento de clientes, você será redirecionado para essa tela:
