@@ -42,7 +42,7 @@ git clone https://github.com/thalesmanoel/store-management-system
 
 2. **Entre no diretório que está o projeto**
 ```bash
-cd store-management-system
+cd /store-management-system
 ```
 
 4. **Abra o seu terminal e rode o comando do Docker abaixo:**
