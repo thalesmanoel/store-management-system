@@ -44,6 +44,11 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 3. **Abra o seu terminal e rode o comando do Docker abaixo:**
 ``docker-compose up --build``
 
+4. **Abra o navegador e acesse:**
+``http://localhost:4200``
+
+5. **Feito isso você poderá explorar o sistema e suas funcionalidades, começando com o menu inicial:**
+
 
 
 
