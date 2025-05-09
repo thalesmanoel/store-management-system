@@ -60,7 +60,7 @@ http://localhost:4200
 ## Explorando as funcionalidades:
 <img src="images-readme/menu.png" alt="Tela de menu" width="800"/>
 
-- Na tela de menu você pode escolher inicialmente fazer a criação de um cliente, vendedor ou produto. Ao clicar na opção de Gerenciamento de clientes, você será redirecionado para essa tela:
+- Na tela de menu você pode escolher inicialmente fazer a criação de um cliente, vendedor ou produto. Ao clicar na opção de "Gerenciamento de clientes", você será redirecionado para essa tela:
 
 <img src="images-readme/client-list.png" alt="Tela da lista de clientes" width="800"/>
 
