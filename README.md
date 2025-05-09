@@ -36,10 +36,13 @@ Uma aplicação web full-stack que permite aos usuários visualizar, criar, edit
 
 ### Passos para a execução:
 1.**Clone o repositório com esse comando:**
-``` git clone https://github.com/thalesmanoel/store-management-system```
+``git clone https://github.com/thalesmanoel/store-management-system``
 
-2. **Entre no diretório que está o projeto***
-``` cd store-management-system```
+2. **Entre no diretório que está o projeto**
+``cd store-management-system``
+
+3. **Abra o seu terminal e rode o comando do Docker abaixo:**
+``docker-compose up --build``
 
 
 
